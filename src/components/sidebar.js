@@ -13,7 +13,7 @@ function sidebar() {
   return (
     <div className="sidebar">
       <SidebarRow
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQLR69QVj_et0K5cQABVZj4qCe16leaPUHBSg&usqp=CAU"
+        src="https://scontent-mrs2-2.xx.fbcdn.net/v/t1.0-9/69968969_163430454736461_8410343287591796736_n.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=cQAjGWdxq0wAX-ubuDG&_nc_ht=scontent-mrs2-2.xx&oh=cebeee1e6c3baaebc59cf48178e20654&oe=5F72E420"
         title="abdoug"
       />
       <SidebarRow Icon={LocalHospitalIcon} title="Covid-19 informations" />
