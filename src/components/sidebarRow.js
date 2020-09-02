@@ -2,7 +2,7 @@ import React from "react";
 import "../assets/styles/sidebarRow.css";
 import { Avatar } from "@material-ui/core";
 
-function sidebarRow({ src, Icon, title }) {
+function SidebarRow({ src, Icon, title }) {
   return (
     <div className="sidebarRow">
       {src && <Avatar src={src} />}
@@ -12,4 +12,4 @@ function sidebarRow({ src, Icon, title }) {
   );
 }
 
-export default sidebarRow;
+export default SidebarRow;

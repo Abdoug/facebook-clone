@@ -2,7 +2,7 @@ import React from "react";
 import Story from "./story";
 import "../assets/styles/storyReel.css";
 
-function storyReel() {
+function StoryReel() {
   return (
     <div className="storyReel">
       <Story
@@ -34,4 +34,4 @@ function storyReel() {
   );
 }
 
-export default storyReel;
+export default StoryReel;
