@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../assets/styles/header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
@@ -12,9 +12,33 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
 import { Avatar, IconButton } from "@material-ui/core";
 import { useStateValue } from "../contextApi/stateProvider";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import { signOut } from "../services/auth";
 
 function Header() {
   const [{ user }, dispatch] = useStateValue();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [menuOpened, setMenuOpened] = useState(Boolean(anchorEl));
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+    setMenuOpened(true);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setMenuOpened(false);
+  };
+
+  const signMeOut = () => {
+    handleClose();
+    try {
+      signOut();
+    } catch (e) {
+      console.log("Error when signing out: ", e);
+    }
+  };
 
   return (
     <div className="header">
@@ -59,9 +83,27 @@ function Header() {
         <IconButton>
           <NotificationsActiveIcon />
         </IconButton>
-        <IconButton>
+        <IconButton onClick={handleMenu}>
           <ExpandMoreIcon />
         </IconButton>
+        <Menu
+          id="menu-appbar"
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          keepMounted
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={menuOpened}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>Profile</MenuItem>
+          <MenuItem onClick={signMeOut}>Sign out</MenuItem>
+        </Menu>
       </div>
     </div>
   );
